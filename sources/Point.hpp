@@ -1,11 +1,16 @@
+#pragma once
 #include <math.h>
 #include <iostream>
 using namespace std;
+namespace ariel{
 
 class Point{
 
 double x;
 double y;
+
+
+public:
 
 Point(double xPoint, double yPoint):x(xPoint),y(yPoint){}
 Point():x(0.0),y(0.0){}
@@ -24,8 +29,17 @@ void print(){
 cout<<"x : "<<this->x<<" y: "<<this->y<<endl;
 }
 
-Point MoveTowardsTo(Point origin , Point dest , double distance){
-    return Point() ;
+static const Point moveTowards(Point &origin , Point &dest , double distance){
+    return Point(0,0);
+}
+
+double getX(){
+    return x;
+}
+
+double getY()
+{
+    return y;
 }
 
 
@@ -36,5 +50,5 @@ Point MoveTowardsTo(Point origin , Point dest , double distance){
 
 
 
-
 };
+}
