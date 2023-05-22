@@ -7,61 +7,59 @@ using namespace std;
 
 namespace ariel
 {
-class Character{
+    class Character
+    {
 
-    Point &location;
-    int hit_points;
-    string name;
-    bool alive;
+        Point &location;
+        int hit_points;
+        string name;
+        bool alive;
 
-public:
-    Character(Point &point ,int hitpoints,  string name):location(point),hit_points(hitpoints), name(name){};
-    
-bool isAlive() const
-{
-    return alive;
-}
+    public:
+        Character(Point &point, int hitpoints, string name);
 
-virtual double distance(Character *other) const
-{
-    return this->location.distance(other->location);
-}
+        bool isAlive() const
+        {
+            return alive;
+        }
 
-virtual void hit(int num) 
-{
+        void setAlive(bool _alive)
+        {
+            alive = _alive;
+        }
 
-};
+        virtual double distance(Character *other) const
+        {
+            return this->location.distance(other->location);
+        }
 
-virtual string getName() const
-{
-    return this->name;
-}
+        virtual void hit(int damage);
 
-virtual Point getLocation() const 
-{
-    return this->location;
-};
+        virtual string getName() const
+        {
+            return this->name;
+        }
 
-virtual string print(){
-    return " ";
-}
+        virtual Point getLocation() const
+        {
+            return this->location;
+        };
 
-int getHitPoints(){
-    return hit_points;
-}
+        virtual string print() const;
 
+        int getHitPoints()
+        {
+            return hit_points;
+        }
 
+        string strGetLocation() const
+        {
+            return "x is : " + to_string(this->location.getX()) + " y is : " + to_string(this->location.getY());
+        }
 
-
-
-
-
-
-
-
-
-
-
-};
+        void setLocation(Point loc)
+        {
+            this->location=loc;
+        }
+    };
 } // namespace ariel
-

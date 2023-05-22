@@ -9,8 +9,10 @@ int ammo;
 
 public:
 
-Cowboy(string name ,Point location) :Character(location,100,name),ammo(6){};
-void shoot (Character *enemy){};
+Cowboy(string name ,Point location);
+
+
+void shoot (Character *enemy);
 
 bool hasBullets(){
     return false;
@@ -20,9 +22,9 @@ void reload(){
     this->ammo=6;
 };
 
-string print() override{
-    return " ";
-}
+string print() const override;
+    
+
 
 int getAmmo()
 

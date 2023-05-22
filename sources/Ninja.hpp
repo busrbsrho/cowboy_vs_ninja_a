@@ -10,12 +10,12 @@ class Ninja : public Character
 private:
     /* data */
     int speed;
-
+ 
 public:
-    Ninja(string name ,int hitPoints, Point &p):Character(p,hitPoints,name){};
-    virtual void move(Character *enemy){};
+    Ninja(string name ,int hitPoints, Point &p);
+    virtual void move(Character *enemy);
     virtual void slash(Character *enemy){};
-    string print() override{
+    string print() const override{
         return "";
     };
 

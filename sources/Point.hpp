@@ -29,9 +29,7 @@ void print(){
 cout<<"x : "<<this->x<<" y: "<<this->y<<endl;
 }
 
-static const Point moveTowards(Point &origin , Point &dest , double distance){
-    return Point(0,0);
-}
+static Point moveTowards(Point origin , Point dest , double distance);
 
 double getX(){
     return x;
