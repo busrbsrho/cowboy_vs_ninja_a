@@ -15,6 +15,7 @@ namespace ariel
     private:
         Character* leader;
         vector<Character*> fighters{10};
+        int count_of_fighters;
     public:
         Team(Character *lead):leader(lead){};
         ~Team(){
@@ -27,6 +28,9 @@ namespace ariel
             return 0;
         };
         virtual void print() const {};
+        int getAmount();
+        Character *closest(Team *team,Character *leader);
+        
         
 
        
