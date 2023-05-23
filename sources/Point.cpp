@@ -26,10 +26,10 @@ using namespace ariel;
     }
 
     // Calculate the distance between the source and destination points
-    double distance = origin.distance(dest);
+    double dist = origin.distance(dest);
 
     // If the distance is less than or equal to the given distance, return the destination point
-    if (distance <= distance)
+    if (dist <= distance)
     {
         return dest;
     }

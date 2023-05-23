@@ -1,6 +1,7 @@
 #include"Character.hpp"
 #include "string"
 using namespace std;
+#define COWBOY_LIFE 100
 namespace ariel{
 
 class Cowboy : public Character{
@@ -23,6 +24,7 @@ void reload(){
 };
 
 string print() const override;
+    
     
 
 

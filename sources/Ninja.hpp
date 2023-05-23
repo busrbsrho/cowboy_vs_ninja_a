@@ -14,10 +14,8 @@ private:
 public:
     Ninja(string name ,int hitPoints, Point &p);
     virtual void move(Character *enemy);
-    virtual void slash(Character *enemy){};
-    string print() const override{
-        return "";
-    };
+    virtual void slash(Character *enemy);
+    string print() const override;
 
 
 };

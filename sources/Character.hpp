@@ -45,9 +45,9 @@ namespace ariel
             return this->location;
         };
 
-        virtual string print() const;
+        virtual string print() const=0;
 
-        int getHitPoints()
+        int getHitPoints() const
         {
             return hit_points;
         }

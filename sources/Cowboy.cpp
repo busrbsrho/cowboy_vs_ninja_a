@@ -5,7 +5,7 @@
 using namespace std;
 using namespace ariel;
 
-Cowboy::Cowboy(string name ,Point location):Character(location,100,name){
+Cowboy::Cowboy(string name ,Point location):Character(location,COWBOY_LIFE,name){
     this->ammo=6;
 };
 
@@ -28,7 +28,7 @@ void Cowboy::shoot(Character *enemy){
 
 };
 
-string Character::print() const  {
+string Cowboy::print() const  {
    
    string data;
    if(!isAlive())
@@ -39,7 +39,7 @@ string Character::print() const  {
 
    }
    else{
-     data = "C character name " +getName()+" hitting points is :"  + to_string(hit_points)+  "  location is "+strGetLocation();
+     data = "C character name " +getName()+" hitting points is :"  + to_string(getHitPoints())+  "  location is "+strGetLocation();
    }
 
    return data;
