@@ -9,7 +9,7 @@ private:
     /* data */
 public:
 
-   TrainedNinja(string name,Point location):Ninja(name,120,location){};
+   TrainedNinja(string name,Point location);
 
    
 };

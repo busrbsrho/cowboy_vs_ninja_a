@@ -7,7 +7,7 @@ class YoungNinja:public Ninja
         /* data */
     public:
 
-        YoungNinja(string name , Point location):Ninja(name,100,location){};
+        YoungNinja(string name , Point location);
 
     
     };
