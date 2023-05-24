@@ -27,6 +27,7 @@ namespace ariel
         int stillAlive();
         virtual void print() const;
         Character *closest(Team *team,Character *leader);
+        void closestchecker();
         
         
 

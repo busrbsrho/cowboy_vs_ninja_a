@@ -12,7 +12,7 @@ private:
     int speed;
  
 public:
-    Ninja(string name ,int hitPoints, Point &p,int _speed);
+    Ninja(string name ,int hitPoints, Point &loc,int _speed);
     virtual void move(Character *enemy);
     virtual void slash(Character *enemy);
     string print() const override;

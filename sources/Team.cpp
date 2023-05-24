@@ -38,8 +38,6 @@ Character* Team::closest(Team *team,Character *leader){
 void Team::attack(Team *enemyleader){
 
 
-    
-
 if (enemyleader==nullptr)
 {
     __throw_invalid_argument("null pointer to enemy team");
@@ -92,14 +90,17 @@ for (size_t i = 0; i < fighters.size(); i++)
     if (dynamic_cast<Ninja*>(fighters.at(i))!=nullptr && fighters.at(i)->isAlive())
     {
         nin=dynamic_cast<Ninja*>(fighters.at(i));
-    }
+    
     if (nin->getLocation().distance(victim->getLocation())<=1)
     {
         nin->slash(victim);
-    }else
+    }
+    else
     {
         nin->move(victim);
     }
+    }
+
 
     nin=nullptr;
     
@@ -178,3 +179,26 @@ for (size_t i = 0; i < fighters.size(); i++)
 
 }
 }
+
+
+void Team::closestchecker(){
+    Point a(32.3,44),b(1.3,3.5);
+    Cowboy *tom = new Cowboy("Tom", a);
+    OldNinja *sushi = new OldNinja("sushi", b);
+    Team team_A(tom); 
+    team_A.add(new YoungNinja("Yogi", Point(64,57)));
+    Team team_B(sushi);
+    team_B.add(new TrainedNinja("Hikari", Point(12,81)));
+    Character *victim=closest(&team_B,tom);
+    cout<<victim->print()<<endl;
+    
+}
+
+
+
+
+
+
+
+
+

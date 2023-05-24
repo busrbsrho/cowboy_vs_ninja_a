@@ -15,7 +15,7 @@ Cowboy(string name ,Point location);
 
 void shoot (Character *enemy);
 
-bool hasBullets(){
+bool hasBullets() const{
     return ammo>0;
 };
 
@@ -28,17 +28,14 @@ string print() const override;
     
 
 
-int getAmmo()
+int getAmmo() const
 
 {
     return ammo;
 }
 
-string type() const override{
 
-    return "C";
 
-}
 
 
 

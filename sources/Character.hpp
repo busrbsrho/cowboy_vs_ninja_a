@@ -13,6 +13,7 @@ namespace ariel
         Point location;
         int hit_points;
         string name;
+        bool isInTeam;
        
 
     public:
@@ -52,9 +53,17 @@ namespace ariel
 
        void setLocation (Point loc) ;
 
-        virtual string type() const{
-            return "d";
-        }
+      
+       void setInTeam(bool flag)
+       {
+        isInTeam=flag;
+       } 
+
+       
+       bool getIsInTeam(){
+        return isInTeam;
+       }
+
 
     };
 } // namespace ariel

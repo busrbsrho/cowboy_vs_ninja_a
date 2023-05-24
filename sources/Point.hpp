@@ -17,7 +17,7 @@ Point():x(0.0),y(0.0){}
 
 double distance(const Point &other) const
 {
-    double dis;
+    double dis=0;
     double ysub= this->y-other.y;
     double xsub= this->x -other.x;
     dis= pow(xsub,2)+pow(ysub,2);
@@ -25,17 +25,17 @@ double distance(const Point &other) const
     return dis;
 }
 
-void print(){
+void print() const{
 cout<<"x : "<<this->x<<" y: "<<this->y<<endl;
 }
 
 static Point moveTowards (Point source, Point destanation, double distance);
 
-double getX(){
+double getX() const{
     return this->x;
 }
 
-double getY()
+double getY() const
 {
     return this->y;
 }
