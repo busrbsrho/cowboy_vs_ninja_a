@@ -2,7 +2,7 @@
 #include "stdexcept"
 using namespace ariel;
 
- Ninja :: Ninja(string name ,int hitPoints, Point &p):Character(p,hitPoints,name){};
+ Ninja :: Ninja(string name ,int hitPoints, Point &p,int _speed):Character(p,hitPoints,name),speed(_speed){};
 
  void Ninja ::move(Character *enemy){
     if(enemy==nullptr || enemy->isAlive()==false)
@@ -10,8 +10,8 @@ using namespace ariel;
         __throw_invalid_argument("enemy not found or dead");
     }
 
-      setLocation(Point :: moveTowards(getLocation(), enemy -> getLocation(), speed));
-    
+   setLocation(Point::moveTowards(this->getLocation(),enemy->getLocation(),this->speed));
+
  }
 
 

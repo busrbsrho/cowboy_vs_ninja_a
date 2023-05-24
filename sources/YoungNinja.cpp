@@ -2,4 +2,4 @@
 using namespace ariel;
 
      
-YoungNinja ::YoungNinja(string name , Point location):Ninja(name,100,location){};
+YoungNinja ::YoungNinja(string name , Point location):Ninja(name,100,location,14){};

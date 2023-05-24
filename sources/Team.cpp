@@ -12,7 +12,7 @@ Character* Team::closest(Team *team,Character *leader){
     Character *minimal=nullptr;
     double minimal_distance=INT16_MAX;
 
-    for(size_t i=0; i<team->getAmount(); i++)
+    for(size_t i=0; i<team->fighters.size(); i++)
     {
         if(team->fighters.at(i)==leader || team->fighters.at(i)->isAlive()==false)
         {
@@ -37,18 +37,19 @@ Character* Team::closest(Team *team,Character *leader){
 
 void Team::attack(Team *enemyleader){
 
-if (enemyleader->stillAlive()==0)
-{
-    cout<<"all enemys are dead";
-    return;
-}
+
     
 
 if (enemyleader==nullptr)
 {
     __throw_invalid_argument("null pointer to enemy team");
 }
-    
+
+if (enemyleader->stillAlive()==0)
+{
+    cout<<"all enemys are dead";
+    return;
+}
 
 if (!leader->isAlive())
 {
@@ -59,7 +60,7 @@ Character *victim=nullptr;
 Cowboy *cow_boy=nullptr;
 victim=closest(enemyleader,leader);
 
-for (size_t i = 0; i < getAmount(); i++)
+for (size_t i = 0; i < fighters.size(); i++)
 {
     if(dynamic_cast<Cowboy *>(fighters.at(i))!=nullptr)
     {
@@ -86,7 +87,7 @@ for (size_t i = 0; i < getAmount(); i++)
 
 Ninja *nin=nullptr;
 
-for (size_t i = 0; i < getAmount(); i++)
+for (size_t i = 0; i < fighters.size(); i++)
 {
     if (dynamic_cast<Ninja*>(fighters.at(i))!=nullptr && fighters.at(i)->isAlive())
     {
@@ -118,30 +119,15 @@ for (size_t i = 0; i < getAmount(); i++)
 
 }
 
-int Team:: getAmount()
-{
-    int count=0; 
-    for(size_t i=0; i<10; i++ )
-    {
-        if (fighters.at(i)!=nullptr)
-        {
-            count++;
-        }
-        
-    }
-
-    return count;
-}
-
 void Team ::add (Character *fighter)
 {
     if(fighter==nullptr)
     {
         __throw_invalid_argument("null pointer invalid fighter");
     }
-    if(getAmount()==10)
+    if(fighters.size()==10)
     {
-        __throw_invalid_argument("THe team is alreadhy full");
+        __throw_invalid_argument("The team is alreadhy full");
     }
     
     fighters.push_back(fighter);
@@ -154,9 +140,9 @@ void Team ::add (Character *fighter)
 int Team::stillAlive(){
 
     int count=0;
-    for (size_t i = 0; i < getAmount(); i++)
+    for (size_t i = 0; i < fighters.size(); i++)
     {
-        if(fighters.at(i)->isAlive()){
+        if(fighters.at(i)->isAlive()==true){
             count++;
         }
     }

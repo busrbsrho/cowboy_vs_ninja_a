@@ -39,13 +39,15 @@ int main() {
 
      Team team_B(sushi);
      team_B.add(new TrainedNinja("Hikari", Point(12,81)));
+     cout<<"here is team b"<<endl;
      team_B.print();
-     cout<<to_string(team_B.stillAlive()); 
+     cout<<to_string(team_B.stillAlive())<<endl;
+     cout<<to_string(team_A.stillAlive())<<endl;
+     
 
      while(team_A.stillAlive() > 0 && team_B.stillAlive() > 0){
         cout<<"enterd while"; 
         team_A.attack(&team_B);
-        team_B.attack(&team_A);
         team_A.print();
         team_B.print();
      }

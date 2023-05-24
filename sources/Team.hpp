@@ -14,7 +14,7 @@ namespace ariel
     {
     private:
         Character* leader;
-        vector<Character*> fighters{10};
+        vector<Character*> fighters;
         int count_of_fighters;
     public:
         Team(Character *lead);
@@ -26,7 +26,6 @@ namespace ariel
         void add(Character* fighter);
         int stillAlive();
         virtual void print() const;
-        int getAmount();
         Character *closest(Team *team,Character *leader);
         
         
