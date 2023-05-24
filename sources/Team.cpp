@@ -2,7 +2,9 @@
 using namespace ariel;
 
 
-Team :: Team(Character *lead):leader(lead){};
+Team :: Team(Character *lead):leader(lead){
+   add(leader);
+};
 
 
 
@@ -10,9 +12,9 @@ Character* Team::closest(Team *team,Character *leader){
     Character *minimal=nullptr;
     double minimal_distance=INT16_MAX;
 
-    for(int i=0; i<team->getAmount(); i++)
+    for(size_t i=0; i<team->getAmount(); i++)
     {
-        if(team->fighters.at(i)==leader)
+        if(team->fighters.at(i)==leader || team->fighters.at(i)->isAlive()==false)
         {
             continue;
         }
@@ -22,6 +24,7 @@ Character* Team::closest(Team *team,Character *leader){
             minimal=team->fighters.at(i);
             minimal_distance=temp_distance;
         }
+        
     }
 
     return minimal;
@@ -33,6 +36,13 @@ Character* Team::closest(Team *team,Character *leader){
 }
 
 void Team::attack(Team *enemyleader){
+
+if (enemyleader->stillAlive()==0)
+{
+    cout<<"all enemys are dead";
+    return;
+}
+    
 
 if (enemyleader==nullptr)
 {
@@ -46,6 +56,57 @@ if (!leader->isAlive())
 }
 
 Character *victim=nullptr;
+Cowboy *cow_boy=nullptr;
+victim=closest(enemyleader,leader);
+
+for (size_t i = 0; i < getAmount(); i++)
+{
+    if(dynamic_cast<Cowboy *>(fighters.at(i))!=nullptr)
+    {
+        cow_boy=dynamic_cast<Cowboy *>(fighters.at(i));
+     if (cow_boy->isAlive())
+     {  
+        if (cow_boy->hasBullets())
+        {
+            cow_boy->shoot(victim);
+        }
+        else{
+            cow_boy->reload();
+        }
+        
+    }
+    }
+    cow_boy=nullptr;
+}
+
+
+
+
+
+
+Ninja *nin=nullptr;
+
+for (size_t i = 0; i < getAmount(); i++)
+{
+    if (dynamic_cast<Ninja*>(fighters.at(i))!=nullptr && fighters.at(i)->isAlive())
+    {
+        nin=dynamic_cast<Ninja*>(fighters.at(i));
+    }
+    if (nin->getLocation().distance(victim->getLocation())<=1)
+    {
+        nin->slash(victim);
+    }else
+    {
+        nin->move(victim);
+    }
+
+    nin=nullptr;
+    
+    
+}
+
+
+
 
 
 
@@ -60,7 +121,7 @@ Character *victim=nullptr;
 int Team:: getAmount()
 {
     int count=0; 
-    for(int i=0; i<10; i++ )
+    for(size_t i=0; i<10; i++ )
     {
         if (fighters.at(i)!=nullptr)
         {
@@ -86,4 +147,48 @@ void Team ::add (Character *fighter)
     fighters.push_back(fighter);
     
 
+}
+
+
+
+int Team::stillAlive(){
+
+    int count=0;
+    for (size_t i = 0; i < getAmount(); i++)
+    {
+        if(fighters.at(i)->isAlive()){
+            count++;
+        }
+    }
+    return count;
+
+}
+
+
+void Team:: print() const{
+    Cowboy *cow_boy=nullptr;
+    Ninja *nin=nullptr;
+for (size_t i = 0; i < fighters.size(); i++)
+    {
+    if(dynamic_cast<Cowboy *>(fighters.at(i))!=nullptr)
+    {
+        cow_boy=dynamic_cast<Cowboy *>(fighters.at(i));
+        cout<<cow_boy->print()<<endl;
+            
+    }
+    cow_boy=nullptr;
+
+}
+for (size_t i = 0; i < fighters.size(); i++)
+{
+    if (dynamic_cast<Ninja*>(fighters.at(i))!=nullptr && fighters.at(i)->isAlive())
+    {
+        nin=dynamic_cast<Ninja*>(fighters.at(i));
+        cout<<nin->print()<<endl;
+    }
+    nin=nullptr;
+
+
+
+}
 }

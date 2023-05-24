@@ -18,32 +18,23 @@ using namespace ariel;
 
 
 
-  Point Point::moveTowards(Point origin , Point dest , double distance){
-
-     if (distance < 0)
-    {
-        throw std::invalid_argument("Distance can't be less than 0");
+  Point Point :: moveTowards (Point source, Point dest, double dist) {
+    if (dist < 0) {
+        throw invalid_argument ("Distance can't be negative!");
     }
-
-    // Calculate the distance between the source and destination points
-    double dist = origin.distance(dest);
-
-    // If the distance is less than or equal to the given distance, return the destination point
-    if (dist <= distance)
-    {
+    // If "dest" is already at distance "dist" or less, return it.
+    if (source.distance(dest) <= dist) {
         return dest;
     }
-
-    // Calculate the ratio between the given distance and the distance between the source and destination points
-    double ratio = distance / distance;
-
-    // Calculate the new x and y coordinates based on the ratio
-    double new_x = origin.getX() + (ratio * (dest.getX() - origin.getX()));
-    double new_y = origin.getY() + (ratio * (dest.getY() - origin.getY()));
-
-    // Return a new point with the new x and y coordinates
-    return Point(new_x, new_y);
+    // Else, the closest point is somewhere on the vector connecting source and dest.
+    // Find the relative portion of dist from the whole vector.
+    double portion = dist / source.distance(dest);
+    // Return the point at the end of the portion (vector wise).
+    // Source: https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
+    return Point ((1 - portion) * source.getX() + portion * dest.getX(),
+                  (1 - portion) * source.getY() + portion * dest.getY());
 }
+
 
 
 

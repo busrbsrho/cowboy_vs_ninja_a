@@ -10,7 +10,7 @@ using namespace ariel;
         __throw_invalid_argument("enemy not found or dead");
     }
 
-    this->setLocation(Point::moveTowards(this->getLocation(),enemy->getLocation(),speed));
+      setLocation(Point :: moveTowards(getLocation(), enemy -> getLocation(), speed));
     
  }
 
@@ -25,7 +25,7 @@ using namespace ariel;
    
    if(this->isAlive() && this->getLocation().distance(enemy->getLocation())<=1)
    { 
-    enemy->hit(40);
+      enemy->hit(40);
    }
 
 

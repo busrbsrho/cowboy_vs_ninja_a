@@ -9,7 +9,7 @@ Character::Character(Point &point ,int hitpoints,  string name):location(point),
 
 void Character::hit(int damage){
 
-    if(this->alive == true)
+    if(this->isAlive() == true)
         {
             if(this->hit_points>damage)
             {
@@ -18,7 +18,7 @@ void Character::hit(int damage){
             else
             {
                 hit_points=0;
-                this->alive=false;
+                
             }
         }
 
@@ -28,4 +28,14 @@ void Character::hit(int damage){
 string Character::print() const 
 {
     return "Missing an OverRide";
+}
+
+string Character::strGetLocation() const{
+
+    return "("+to_string(this->getLocation().getX())+","+to_string(this->getLocation().getY())+")";
+
+}
+
+void Character :: setLocation(Point loc){
+    location=loc;
 }

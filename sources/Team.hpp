@@ -17,17 +17,15 @@ namespace ariel
         vector<Character*> fighters{10};
         int count_of_fighters;
     public:
-        Team(Character *lead):leader(lead){};
+        Team(Character *lead);
         ~Team(){
 
         };
       
-        virtual void attack(Team* enemyleader){};
-        void add(Character* fighter){};
-        int stillAlive(){
-            return 0;
-        };
-        virtual void print() const {};
+        virtual void attack(Team* enemyleader);
+        void add(Character* fighter);
+        int stillAlive();
+        virtual void print() const;
         int getAmount();
         Character *closest(Team *team,Character *leader);
         

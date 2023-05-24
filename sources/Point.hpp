@@ -29,15 +29,25 @@ void print(){
 cout<<"x : "<<this->x<<" y: "<<this->y<<endl;
 }
 
-static Point moveTowards(Point origin , Point dest , double distance);
+static Point moveTowards (Point source, Point destanation, double distance);
 
 double getX(){
-    return x;
+    return this->x;
 }
 
 double getY()
 {
-    return y;
+    return this->y;
+}
+
+void setX(double xpo)
+{
+    x=xpo;
+}
+
+void setY(double ypo)
+{
+    y=ypo;
 }
 
 

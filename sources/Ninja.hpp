@@ -16,7 +16,11 @@ public:
     virtual void move(Character *enemy);
     virtual void slash(Character *enemy);
     string print() const override;
+    string type() const override{
 
+    return "D";
+
+}
 
 };
 }

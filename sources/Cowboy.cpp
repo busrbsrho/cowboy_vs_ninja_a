@@ -21,9 +21,7 @@ void Cowboy::shoot(Character *enemy){
     {
         cout<<"out of bullets"<<endl;
     }
-    else{
-        cout<<this->getName()<<"is Dead "<<endl;
-    }
+   
     
 
 };
@@ -39,9 +37,12 @@ string Cowboy::print() const  {
 
    }
    else{
-     data = "C character name " +getName()+" hitting points is :"  + to_string(getHitPoints())+  "  location is "+strGetLocation();
+     data = "C character name " +getName()+" hitting points is :"  + to_string(getHitPoints())+  "  location is "+ strGetLocation();
    }
 
    return data;
 
 };
+
+
+
