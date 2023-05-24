@@ -9,8 +9,8 @@ private:
 
 public:
     Team2(Character *leader);
-    void print() const override{};
-    void attack (Team *enemyLeader) override{};
+    void print() const override;
+    void attack (Team *enemyLeader) override;
     ~Team2()=default;
 };
 

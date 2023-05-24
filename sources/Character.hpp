@@ -18,7 +18,7 @@ namespace ariel
 
     public:
         Character(Point &point, int hitpoints, string name);
-        ~Character()=default;
+        virtual ~Character()=default;
 
         bool isAlive() const
         {
