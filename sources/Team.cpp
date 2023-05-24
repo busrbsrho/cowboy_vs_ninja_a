@@ -6,6 +6,14 @@ Team :: Team(Character *lead):leader(lead){
    add(leader);
 };
 
+Team::~Team(){
+    for (size_t i = 0; i < fighters.size(); i++)
+    {
+        delete fighters.at(i);
+    }
+    
+
+}
 
 
 Character* Team::closest(Team *team,Character *leader){
@@ -47,6 +55,10 @@ if (enemyleader->stillAlive()==0)
 {
     cout<<"all enemys are dead";
     return;
+}
+if (this->stillAlive() == 0)
+{
+    throw std::invalid_argument("Team can't attack with no warriors");
 }
 
 if (!leader->isAlive())
@@ -112,6 +124,8 @@ for (size_t i = 0; i < fighters.size(); i++)
 
 
 
+
+
     
 
 
@@ -130,9 +144,14 @@ void Team ::add (Character *fighter)
     {
         __throw_invalid_argument("The team is alreadhy full");
     }
+    if (fighter->getIsInTeam())
+    {
+        __throw_invalid_argument("is already in a team");
+    }
+    
     
     fighters.push_back(fighter);
-    
+    fighter->setInTeam(true);
 
 }
 
@@ -181,17 +200,8 @@ for (size_t i = 0; i < fighters.size(); i++)
 }
 
 
-void Team::closestchecker(){
-    Point a(32.3,44),b(1.3,3.5);
-    Cowboy *tom = new Cowboy("Tom", a);
-    OldNinja *sushi = new OldNinja("sushi", b);
-    Team team_A(tom); 
-    team_A.add(new YoungNinja("Yogi", Point(64,57)));
-    Team team_B(sushi);
-    team_B.add(new TrainedNinja("Hikari", Point(12,81)));
-    Character *victim=closest(&team_B,tom);
-    cout<<victim->print()<<endl;
-    
+vector<Character*> Team::getFighters() const{
+    return fighters;
 }
 
 

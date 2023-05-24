@@ -6,11 +6,12 @@ namespace ariel
 {
 private:
     /* data */
+
 public:
-    Team2(Character *leader):Team(leader){};
+    Team2(Character *leader);
     void print() const override{};
     void attack (Team *enemyLeader) override{};
-    ~Team2(){};
+    ~Team2()=default;
 };
 
 

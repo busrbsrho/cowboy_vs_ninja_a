@@ -13,11 +13,12 @@ namespace ariel
         Point location;
         int hit_points;
         string name;
-        bool isInTeam;
+        bool isInTeam=false;
        
 
     public:
         Character(Point &point, int hitpoints, string name);
+        ~Character()=default;
 
         bool isAlive() const
         {
@@ -59,7 +60,7 @@ namespace ariel
         isInTeam=flag;
        } 
 
-       
+
        bool getIsInTeam(){
         return isInTeam;
        }

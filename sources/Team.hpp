@@ -18,9 +18,7 @@ namespace ariel
         int count_of_fighters;
     public:
         Team(Character *lead);
-        ~Team(){
-
-        };
+        ~Team();
       
         virtual void attack(Team* enemyleader);
         void add(Character* fighter);
@@ -28,6 +26,15 @@ namespace ariel
         virtual void print() const;
         Character *closest(Team *team,Character *leader);
         void closestchecker();
+        vector<Character *> getFighters() const;
+        Character* getLeader(){
+            return leader;
+        }
+        void setLeader(Character* newleader)
+        {
+            leader=newleader;
+        }
+
         
         
 
