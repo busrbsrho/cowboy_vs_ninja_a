@@ -49,7 +49,7 @@ for (size_t i = 0; i < getFighters().size()&&victim->isAlive(); i++)
         cow_boy=dynamic_cast<Cowboy *>(getFighters().at(i));
      if (cow_boy->isAlive())
      {  
-        if (cow_boy->hasBullets())
+        if (cow_boy->hasboolets())
         {
             cow_boy->shoot(victim);
         }
@@ -72,6 +72,9 @@ for (size_t i = 0; i < getFighters().size()&&victim->isAlive(); i++)
         nin->move(victim);
     }
 
+    }
+    if(!victim->isAlive() && enemyleader->stillAlive()>0){
+        victim=closest(enemyleader,getLeader());
     }
 
 

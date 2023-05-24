@@ -12,15 +12,28 @@ Cowboy::Cowboy(string name ,Point location):Character(location,COWBOY_LIFE,name)
 
 void Cowboy::shoot(Character *enemy){
 
-    if(this->isAlive()==true && this->hasBullets()==true)
+    if (!enemy->isAlive())
+   {
+    __throw_runtime_error("cant kill dead enemy");
+   }
+   if(!this->isAlive() )
+   {
+    __throw_runtime_error("cant kill while dead ");
+   }
+   if (this==enemy)
+   {
+    /* code */
+    __throw_runtime_error("no self harm");
+   }
+   
+
+    if(this->isAlive()==true && this->hasboolets()==true && enemy->isAlive())
     {
         enemy->hit(10);
         this->ammo--;
     }
-    if(this->hasBullets()==false)
-    {
-        cout<<"out of bullets"<<endl;
-    }
+    
+
    
     
 
@@ -44,5 +57,14 @@ string Cowboy::print() const  {
 
 };
 
+
+void Cowboy :: reload(){
+    if(isAlive())
+    {
+    this->ammo=6;
+    }
+    else
+    __throw_runtime_error("dead bodey cant reload");
+};
 
 

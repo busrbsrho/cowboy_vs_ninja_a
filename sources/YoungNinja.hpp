@@ -1,3 +1,4 @@
+#pragma once
 #include "Ninja.hpp"
  namespace ariel{
 

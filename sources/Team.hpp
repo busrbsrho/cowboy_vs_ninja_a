@@ -1,4 +1,4 @@
-
+#pragma once
 #include "Character.hpp"
 #include "Cowboy.hpp"
 #include "Ninja.hpp"
@@ -25,7 +25,6 @@ namespace ariel
         int stillAlive();
         virtual void print() const;
         Character *closest(Team *team,Character *leader);
-        void closestchecker();
         vector<Character *> getFighters() const;
         Character* getLeader(){
             return leader;

@@ -50,16 +50,10 @@ if (enemyleader==nullptr)
 {
     __throw_invalid_argument("null pointer to enemy team");
 }
+ if (this->stillAlive() == 0 || enemyleader -> stillAlive() == 0) {
+    throw runtime_error("both team must be alive for an attack to happen");
+    }
 
-if (enemyleader->stillAlive()==0)
-{
-    cout<<"all enemys are dead";
-    return;
-}
-if (this->stillAlive() == 0)
-{
-    throw std::invalid_argument("Team can't attack with no warriors");
-}
 
 if (!leader->isAlive())
 {
@@ -70,14 +64,14 @@ Character *victim=nullptr;
 Cowboy *cow_boy=nullptr;
 victim=closest(enemyleader,leader);
 
-for (size_t i = 0; i < fighters.size(); i++)
+for (size_t i = 0; i < fighters.size()&&victim->isAlive(); i++)
 {
     if(dynamic_cast<Cowboy *>(fighters.at(i))!=nullptr)
     {
         cow_boy=dynamic_cast<Cowboy *>(fighters.at(i));
      if (cow_boy->isAlive())
      {  
-        if (cow_boy->hasBullets())
+        if (cow_boy->hasboolets())
         {
             cow_boy->shoot(victim);
         }
@@ -87,6 +81,15 @@ for (size_t i = 0; i < fighters.size(); i++)
         
     }
     }
+    if(!victim->isAlive()&& enemyleader->stillAlive()>0){
+        victim=closest(enemyleader,leader);
+    }
+    if (enemyleader->stillAlive()==0)
+    {
+        /* code */
+        return;
+    }
+    
     cow_boy=nullptr;
 }
 
@@ -97,7 +100,7 @@ for (size_t i = 0; i < fighters.size(); i++)
 
 Ninja *nin=nullptr;
 
-for (size_t i = 0; i < fighters.size(); i++)
+for (size_t i = 0; i < fighters.size()&&victim->isAlive(); i++)
 {
     if (dynamic_cast<Ninja*>(fighters.at(i))!=nullptr && fighters.at(i)->isAlive())
     {
@@ -111,6 +114,9 @@ for (size_t i = 0; i < fighters.size(); i++)
     {
         nin->move(victim);
     }
+    }
+     if(!victim->isAlive() && enemyleader->stillAlive()>0){
+        victim=closest(enemyleader,leader);
     }
 
 
@@ -142,11 +148,11 @@ void Team ::add (Character *fighter)
     }
     if(fighters.size()==10)
     {
-        __throw_invalid_argument("The team is alreadhy full");
+        __throw_runtime_error("The team is alreadhy full");
     }
     if (fighter->getIsInTeam())
     {
-        __throw_invalid_argument("is already in a team");
+        __throw_runtime_error("is already in a team");
     }
     
     

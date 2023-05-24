@@ -1,3 +1,4 @@
+#pragma once
 #include"Character.hpp"
 #include "string"
 using namespace std;
@@ -15,13 +16,12 @@ Cowboy(string name ,Point location);
 
 void shoot (Character *enemy);
 
-bool hasBullets() const{
+bool hasboolets() const{
+
     return ammo>0;
 };
 
-void reload(){
-    this->ammo=6;
-};
+void reload();
 
 string print() const override;
     

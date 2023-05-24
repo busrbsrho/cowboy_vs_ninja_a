@@ -21,13 +21,31 @@ using namespace ariel;
     {
         __throw_invalid_argument("no enemy bad poinetr");
     }
+    if (!enemy->isAlive())
+   {
+    __throw_runtime_error("cant kill dead enemy");
+   }
+   if(!this->isAlive() )
+   {
+    __throw_runtime_error("cant kill while dead ");
+   }
+   if (this==enemy)
+   {
+    /* code */
+    __throw_runtime_error("no self harm");
+   }
 
    
-   if(this->isAlive() && this->getLocation().distance(enemy->getLocation())<=1)
+   if(this->isAlive() && this->getLocation().distance(enemy->getLocation())<=1 && enemy->isAlive())
    { 
       enemy->hit(40);
    }
 
+   
+
+   
+   
+    
 
 
  }

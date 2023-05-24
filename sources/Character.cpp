@@ -8,6 +8,14 @@ Character::Character(Point &point ,int hitpoints,  string name):location(point),
 
 
 void Character::hit(int damage){
+    if (damage<0)
+    {
+        /* code */
+        __throw_invalid_argument("cant damage negative number");
+    }
+
+    
+    
 
     if(this->isAlive() == true)
         {
