@@ -10,6 +10,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <cassert>
+#include <unistd.h>
 using namespace std;
 
 #include "sources/Team.hpp" //no need for other includes
@@ -36,16 +37,25 @@ int main() {
      Team team_B(sushi);
      team_B.add(new TrainedNinja("Hikari", Point(12,81)));
 
-
-     while(team_A.stillAlive() > 0 && team_B.stillAlive() > 0){
-        team_A.attack(&team_B);
-        team_B.attack(&team_A);
-        team_A.print();
-        team_B.print();
+     while(sushi->isAlive())
+     {
+      tom->shoot(sushi);
+      tom->reload();
+      cout<<sushi->print()<<endl;
+      cout<<tom->print()<<endl;
+      sleep(1);
      }
 
-     if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;
-     else cout << "winner is team_B" << endl;
+
+   //   while(team_A.stillAlive() > 0 && team_B.stillAlive() > 0){
+   //      team_A.attack(&team_B);
+   //      team_B.attack(&team_A);
+   //      team_A.print();
+   //      team_B.print();
+   //   }
+
+   //   if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;
+   //   else cout << "winner is team_B" << endl;
 
      return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack. 
 

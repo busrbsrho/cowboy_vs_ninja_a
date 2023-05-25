@@ -2,7 +2,7 @@
 #include"Character.hpp"
 #include "string"
 using namespace std;
-#define COWBOY_LIFE 100
+#define COWBOY_LIFE 110
 namespace ariel{
 
 class Cowboy : public Character{
